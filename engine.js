@@ -40,7 +40,8 @@
     database: `<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5V19A9 3 0 0 0 21 19V5"/><path d="M3 12A9 3 0 0 0 21 12"/>`,
     sun: `<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>`,
     moon: `<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>`,
-    at: `<circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>`
+    at: `<circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>`,
+    web: `<path d="M12 12 L22 12 M12 12 L19.07 4.93 M12 12 L12 2 M12 12 L4.93 4.93 M12 12 L2 12 M12 12 L4.93 19.07 M12 12 L12 22 M12 12 L19.07 19.07"/><path d="M15.5 12 L14.47 9.53 L12 8.5 L9.53 9.53 L8.5 12 L9.53 14.47 L12 15.5 L14.47 14.47 Z"/><path d="M19 12 L16.95 7.05 L12 5 L7.05 7.05 L5 12 L7.05 16.95 L12 19 L16.95 16.95 Z"/>`
   };
   const isLucide = k => LUCIDE.hasOwnProperty(k);
 
@@ -60,8 +61,8 @@
   }
 
   function glyph(kind) {
-    if (kind === "W" || kind.length === 1) {
-      return `<div class="wm" style="font-size:${Math.round(TW * 0.52)}px">${kind}</div>`;
+    if (kind.length === 1) {
+      return `<div class="wm" style="font-size:${Math.round(TW * 0.58)}px;transform:translateY(-9%)">${kind}</div>`;
     }
     const tf = `transform:${restTransform(kind)} scale(${scaleFor(kind)})`;
     if (kind === "github") return `<svg viewBox="0 0 24 24" style="width:100%;height:100%;${tf}"><circle cx="12" cy="12" r="12" fill="currentColor"/><g transform="translate(3.84 3.84) scale(0.68)"><path d="${OCTO}" style="fill:var(--bg)"/></g></svg>`;
@@ -70,6 +71,7 @@
   }
 
   function randKind() {
+    if (C.webProb && Math.random() < C.webProb) return "web";
     let k = pick(C.baseWeights);
     if ((k === "seed" || k === "petal" || k === "ring") && Math.random() < C.funcReplaceProb) k = pick(C.funcKeys);
     return k;
@@ -198,7 +200,7 @@
 
   function spellName() {
     if (state.busy) return;
-    const word = C.spell.word.toUpperCase(), L = word.length, runs = [];
+    const word = C.spell.word, L = word.length, runs = [];
     for (let r = 0; r < rows; r++) {
       let run = [];
       for (let c = 0; c < cols; c++) {

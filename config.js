@@ -7,12 +7,14 @@ window.WEEVER_CONFIG = {
 
   colors: ["--teal","--teal","--teal","--coffee","--coffee","--coffee","--orange","--mint","--slate"],
 
-  baseWeights: ["petal","dots","node","seed","petal","node","dots","ring","legs","W","seed"],
+  baseWeights: ["petal","dots","node","seed","petal","node","dots","ring","legs","w","seed"],
 
   funcKeys: ["waypoints","gitbranch","link","sync","layers","database"],
   funcReplaceProb: 0.30,
 
-  rest_upright: ["W","legs","waypoints","gitbranch","link","sync","layers","database","github","at","sun","moon","mark"],
+  webProb: 0.012,
+
+  rest_upright: ["w","web","legs","waypoints","gitbranch","link","sync","layers","database","github","at","sun","moon","mark"],
   mirrorProb: 0.5,
   quarterTurnProb: 0.12,
 
@@ -22,9 +24,9 @@ window.WEEVER_CONFIG = {
 
   live: { minGap: 110, maxGap: 320, tiltProb: 0.55, swingProb: 0.30 },
 
-  spell: { word: "weever", stepMs: 210, holdMs: 2400, scatterStepMs: 95 },
+  spell: { word: "weever", stepMs: 210, holdMs: 3100, scatterStepMs: 95 },
 
-  form: { fadeMs: 280, holdMs: 1500, markScale: 1.15 },
+  form: { fadeMs: 280, holdMs: 2050, markScale: 1.15 },
 
   reveal: { firstSpellAfter: 4, firstFormAfter: 7, spellEvery: [7,14], formEvery: [9,16], spontaneousMs: [15000, 27000] },
 
