@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Aggressive scrapers with no upside: declined.
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://weever.ai/sitemap.xml
