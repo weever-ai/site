@@ -24,7 +24,7 @@ window.WEEVER_CONFIG = {
 
   // per-icon nudge, x/y in percent of the tile. negative y = up, negative x = left.
   // add any kind here (web, at, github, sun, letter, ...) to fine-tune its centering.
-  shift: { letter: { x: 0, y: -16 }, web: { x: 0, y: 0 } },
+  shift: { letter: { x: 0, y: -21 }, web: { x: 0, y: 0 } },
 
   branch: { min: 3, max: 9, hops: 2, cooldownMs: 140, litMs: 620, fadeMs: 500 },
 
