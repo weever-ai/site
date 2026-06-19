@@ -41,7 +41,7 @@
     sun: `<circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>`,
     moon: `<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>`,
     at: `<circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/>`,
-    web: `<path d="M12 12 L22 12 M12 12 L19.07 4.93 M12 12 L12 2 M12 12 L4.93 4.93 M12 12 L2 12 M12 12 L4.93 19.07 M12 12 L12 22 M12 12 L19.07 19.07"/><path d="M15.5 12 L14.47 9.53 L12 8.5 L9.53 9.53 L8.5 12 L9.53 14.47 L12 15.5 L14.47 14.47 Z"/><path d="M19 12 L16.95 7.05 L12 5 L7.05 7.05 L5 12 L7.05 16.95 L12 19 L16.95 16.95 Z"/>`
+    web: `<path d="M3 3 L21 3 M3 3 L19.63 9.89 M3 3 L15.73 15.73 M3 3 L9.89 19.63 M3 3 L3 21"/><path d="M9 3 Q7.62 3.92 8.54 5.3 Q6.91 5.62 7.24 7.24 Q5.62 6.91 5.3 8.54 Q3.92 7.62 3 9"/><path d="M14 3 Q11.46 4.68 13.16 7.21 Q10.18 7.8 10.78 10.78 Q7.8 10.18 7.21 13.16 Q4.68 11.46 3 14"/><path d="M19 3 Q15.31 5.45 17.78 9.12 Q13.44 9.97 14.31 14.31 Q9.97 13.44 9.12 17.78 Q5.45 15.31 3 19"/>`
   };
   const isLucide = k => LUCIDE.hasOwnProperty(k);
 
@@ -53,6 +53,7 @@
     return `scaleX(${mir}) rotate(${q}deg)`;
   }
   function scaleFor(kind) {
+    if (kind === "web") return C.scale.web || 0.96;
     if (kind === "github") return C.scale.github;
     if (kind === "sun" || kind === "moon") return C.scale.sun;
     if (kind === "at") return C.scale.at;

@@ -18,7 +18,7 @@ window.WEEVER_CONFIG = {
   mirrorProb: 0.5,
   quarterTurnProb: 0.12,
 
-  scale: { default: 1.0, func: 0.72, github: 0.78, at: 0.9, sun: 0.8 },
+  scale: { default: 1.0, func: 0.72, web: 0.96, github: 0.78, at: 0.9, sun: 0.8 },
 
   branch: { min: 3, max: 9, hops: 2, cooldownMs: 140, litMs: 620, fadeMs: 500 },
 
