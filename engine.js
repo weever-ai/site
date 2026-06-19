@@ -53,19 +53,25 @@
     return `scaleX(${mir}) rotate(${q}deg)`;
   }
   function scaleFor(kind) {
-    if (kind === "web") return C.scale.web || 0.96;
-    if (kind === "github") return C.scale.github;
+    if (C.scale[kind] != null) return C.scale[kind];
     if (kind === "sun" || kind === "moon") return C.scale.sun;
-    if (kind === "at") return C.scale.at;
     if (isLucide(kind)) return C.scale.func;
     return C.scale.default;
+  }
+  // per-icon nudge, x/y as percent of the tile; falls back to 0
+  function shiftFor(kind) {
+    const s = C.shift && C.shift[kind];
+    return { x: (s && s.x) || 0, y: (s && s.y) || 0 };
   }
 
   function glyph(kind) {
     if (kind.length === 1) {
-      return `<div class="wm" style="font-size:${Math.round(TW * 0.58)}px;transform:translateY(-9%)">${kind}</div>`;
+      const lf = C.scale.letter != null ? C.scale.letter : 0.58;
+      const ls = shiftFor("letter");
+      return `<div class="wm" style="font-size:${Math.round(TW * lf)}px;transform:translate(${ls.x}%,${ls.y}%)">${kind}</div>`;
     }
-    const tf = `transform:${restTransform(kind)} scale(${scaleFor(kind)})`;
+    const sh = shiftFor(kind);
+    const tf = `transform:translate(${sh.x}%,${sh.y}%) ${restTransform(kind)} scale(${scaleFor(kind)})`;
     if (kind === "github") return `<svg viewBox="0 0 24 24" style="width:100%;height:100%;${tf}"><circle cx="12" cy="12" r="12" fill="currentColor"/><g transform="translate(3.84 3.84) scale(0.68)"><path d="${OCTO}" style="fill:var(--bg)"/></g></svg>`;
     if (isLucide(kind)) return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.25" stroke-linecap="round" stroke-linejoin="round" style="width:100%;height:100%;${tf}">${LUCIDE[kind]}</svg>`;
     return `<svg viewBox="0 0 100 100" style="width:100%;height:100%;${tf}">${SHAPE[kind] || SHAPE.seed}</svg>`;

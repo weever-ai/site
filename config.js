@@ -18,7 +18,13 @@ window.WEEVER_CONFIG = {
   mirrorProb: 0.5,
   quarterTurnProb: 0.12,
 
-  scale: { default: 1.0, func: 0.72, web: 0.96, github: 0.78, at: 0.9, sun: 0.8 },
+  // size of each glyph relative to its tile. keys can be any kind (web, at, github,
+  // sun, the lowercase letter, etc); func = all the lucide line icons; default = the rest.
+  scale: { default: 1.0, func: 0.72, web: 0.72, github: 0.78, at: 0.9, sun: 0.8, letter: 0.58 },
+
+  // per-icon nudge, x/y in percent of the tile. negative y = up, negative x = left.
+  // add any kind here (web, at, github, sun, letter, ...) to fine-tune its centering.
+  shift: { letter: { x: 0, y: -16 }, web: { x: 0, y: 0 } },
 
   branch: { min: 3, max: 9, hops: 2, cooldownMs: 140, litMs: 620, fadeMs: 500 },
 
