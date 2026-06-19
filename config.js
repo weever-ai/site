@@ -1,5 +1,5 @@
 window.WEEVER_CONFIG = {
-  repoUrl: "",
+  repoUrl: "https://github.com/weever-ai/site",
 
   formEndpoint: "",
 
