@@ -1,7 +1,7 @@
 window.WEEVER_CONFIG = {
   repoUrl: "https://github.com/weever-ai/site",
 
-  formEndpoint: "",
+  formEndpoint: "https://weever-list.shuey298.workers.dev",
 
   tile: { min: 54, max: 74, divisor: 16 },
 
